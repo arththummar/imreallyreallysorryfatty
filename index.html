@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>for disha</title>
+
+  <!-- Google Fonts: Playfair Display (display) + Manrope (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- ========================================================= -->
+  <!-- SECTION 1 — GATE (landing screen)                         -->
+  <!-- ========================================================= -->
+  <section id="gate" aria-label="Enter the secret code">
+    <!-- Background spinning vinyl, purely decorative -->
+    <div class="vinyl vinyl--bg" aria-hidden="true">
+      <div class="vinyl__label"></div>
+    </div>
+
+    <div class="gate-card" id="gateCard">
+      <p class="gate-kicker">a little door</p>
+      <h1 class="gate-title">enter the secret code</h1>
+
+      <form class="gate-form" id="gateForm" autocomplete="off" novalidate>
+        <label class="visually-hidden" for="codeInput">Secret code</label>
+        <input
+          type="text"
+          id="codeInput"
+          class="gate-input"
+          name="code"
+          placeholder="type it here"
+          inputmode="text"
+          autocapitalize="none"
+          spellcheck="false"
+        />
+        <button type="submit" class="gate-submit" aria-label="Unlock">
+          <span aria-hidden="true">&#8594;</span>
+        </button>
+      </form>
+
+      <p class="gate-hint">psst — you already know it.</p>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- SECTION 2 — MAIN SITE (revealed after unlock)             -->
+  <!-- ========================================================= -->
+  <main id="site" class="site is-hidden" aria-hidden="true">
+    <header class="nav">
+      <div class="nav__brand">for disha</div>
+      <nav class="nav__tabs" role="tablist" aria-label="Sections">
+        <button
+          class="tab is-active"
+          role="tab"
+          id="tab-hood"
+          aria-selected="true"
+          aria-controls="panel-hood"
+          data-tab="hood"
+        >the neighbourhood</button>
+        <button
+          class="tab"
+          role="tab"
+          id="tab-food"
+          aria-selected="false"
+          aria-controls="panel-food"
+          data-tab="food"
+        >food</button>
+        <button
+          class="tab"
+          role="tab"
+          id="tab-style"
+          aria-selected="false"
+          aria-controls="panel-style"
+          data-tab="style"
+        >style</button>
+      </nav>
+    </header>
+
+    <!-- Warm one-line intro.
+         Alternate lines to pick from — swap the text below with any of these:
+           "made this for you, only you"
+           "a small corner of the internet, yours"
+           "press play, it's all for you"
+    -->
+    <p class="intro">just a little something for you</p>
+
+    <!-- ================= TAB 1 — the neighbourhood ================= -->
+    <section
+      class="panel is-active"
+      id="panel-hood"
+      role="tabpanel"
+      aria-labelledby="tab-hood"
+      tabindex="0"
+    >
+      <div class="poster">
+        <div class="poster__art">
+          <div class="vinyl vinyl--lg" aria-hidden="true">
+            <div class="vinyl__label"></div>
+          </div>
+        </div>
+
+        <div class="poster__body">
+          <p class="poster__kicker">now spinning</p>
+          <h2 class="poster__title">The Neighbourhood</h2>
+          <p class="poster__sub">a little tracklist, just because.</p>
+
+          <!-- Song TITLES only. No lyrics anywhere in this project. -->
+          <ol class="tracklist">
+            <li><span class="tracklist__num">01</span> Sweater Weather</li>
+            <li><span class="tracklist__num">02</span> Daddy Issues</li>
+            <li><span class="tracklist__num">03</span> Softcore</li>
+            <li><span class="tracklist__num">04</span> Reflections</li>
+            <li><span class="tracklist__num">05</span> Afraid</li>
+            <li><span class="tracklist__num">06</span> You Get Me So High</li>
+            <li><span class="tracklist__num">07</span> R.I.P. 2 My Youth</li>
+            <li><span class="tracklist__num">08</span> Pretty Boy</li>
+          </ol>
+
+          <div class="spotify">
+            <!-- ============================================================= -->
+            <!-- Paste your Spotify embed iframe here.                         -->
+            <!-- In Spotify: Share -> Embed playlist -> copy the <iframe>.     -->
+            <!-- Example:                                                      -->
+            <!-- <iframe style="border-radius:12px"                           -->
+            <!--   src="https://open.spotify.com/embed/playlist/PLAYLIST_ID"  -->
+            <!--   width="100%" height="352" frameborder="0"                  -->
+            <!--   allow="autoplay; clipboard-write; encrypted-media;         -->
+            <!--   fullscreen; picture-in-picture" loading="lazy"></iframe>   -->
+            <!-- ============================================================= -->
+            <p class="spotify__placeholder">🎵 playlist goes here</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB 2 — food ================= -->
+    <section
+      class="panel"
+      id="panel-food"
+      role="tabpanel"
+      aria-labelledby="tab-food"
+      tabindex="0"
+      hidden
+    >
+      <h2 class="panel__heading">tap a card to redeem</h2>
+      <div class="card-grid">
+        <!-- Wingstop -->
+        <div class="flip-card" role="button" tabindex="0" aria-pressed="false"
+             aria-label="Wingstop coupon, tap to flip">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <span class="card-icon" aria-hidden="true">🍗</span>
+              <span class="card-label">Wingstop</span>
+            </div>
+            <div class="flip-face flip-back">
+              <span class="card-back-title">wingstop night</span>
+              <span class="card-back-msg">on me — redeem anytime, no expiration.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- chicken -->
+        <div class="flip-card" role="button" tabindex="0" aria-pressed="false"
+             aria-label="Chicken coupon, tap to flip">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <span class="card-icon" aria-hidden="true">🍟</span>
+              <span class="card-label">chicken</span>
+            </div>
+            <div class="flip-face flip-back">
+              <span class="card-back-title">fried chicken run</span>
+              <span class="card-back-msg">whenever the craving hits — this one's covered.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- pasta -->
+        <div class="flip-card" role="button" tabindex="0" aria-pressed="false"
+             aria-label="Pasta coupon, tap to flip">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <span class="card-icon" aria-hidden="true">🍝</span>
+              <span class="card-label">pasta</span>
+            </div>
+            <div class="flip-face flip-back">
+              <span class="card-back-title">pasta date</span>
+              <span class="card-back-msg">a big warm bowl, your pick of place — redeem anytime.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB 3 — style ================= -->
+    <section
+      class="panel"
+      id="panel-style"
+      role="tabpanel"
+      aria-labelledby="tab-style"
+      tabindex="0"
+      hidden
+    >
+      <h2 class="panel__heading">a little wishlist, on me</h2>
+      <div class="card-grid">
+        <!-- PacSun jeans -->
+        <div class="flip-card" role="button" tabindex="0" aria-pressed="false"
+             aria-label="PacSun jeans gift tag, tap to flip">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <span class="card-icon" aria-hidden="true">👖</span>
+              <span class="card-label">PacSun jeans</span>
+            </div>
+            <div class="flip-face flip-back">
+              <span class="card-back-title">jeans, sorted</span>
+              <span class="card-back-msg">the good PacSun pair you keep eyeing — it's yours.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Garage -->
+        <div class="flip-card" role="button" tabindex="0" aria-pressed="false"
+             aria-label="Garage gift tag, tap to flip">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <span class="card-icon" aria-hidden="true">🧥</span>
+              <span class="card-label">Garage</span>
+            </div>
+            <div class="flip-face flip-back">
+              <span class="card-back-title">Garage haul</span>
+              <span class="card-back-msg">fill the cart, hit checkout — consider it handled.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hollister (playful).
+             Alternate copy to pick from — swap card-back-msg with any of these:
+               "employee discount not included — but this is 100% off retail"
+               "rival-brand rescue mission: fully funded"
+        -->
+        <div class="flip-card" role="button" tabindex="0" aria-pressed="false"
+             aria-label="Hollister gift tag, tap to flip">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <span class="card-icon" aria-hidden="true">🏷️</span>
+              <span class="card-label">Hollister?</span>
+            </div>
+            <div class="flip-face flip-back">
+              <span class="card-back-title">off the clock</span>
+              <span class="card-back-msg">you work there, so this one's the "shop somewhere else, on me" pass.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
