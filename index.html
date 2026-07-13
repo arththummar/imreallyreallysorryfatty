@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>for disha</title>
 
-  <!-- Google Fonts: Playfair Display (display) + Manrope (body) -->
+  <!-- Google Fonts: Playfair Display (display) + Manrope (body) + Dancing Script (transition) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap"
     rel="stylesheet"
   />
 
@@ -51,7 +51,20 @@
   </section>
 
   <!-- ========================================================= -->
-  <!-- SECTION 2 — MAIN SITE (revealed after unlock)             -->
+  <!-- TRANSITION SCREEN (plays after unlock, before main site)  -->
+  <!-- ========================================================= -->
+  <section id="transition" class="is-hidden" aria-hidden="true">
+    <!-- Warm transitional line.
+         Alternate lines to pick from — swap the text below with any of these:
+           "i couldn't find the words, so i built them"
+           "no apology's enough — but here's a start"
+           "made you a little something instead"
+    -->
+    <p class="transition__line">i'm really sorry — so i made you this instead</p>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- SECTION 2 — MAIN SITE (revealed after transition)         -->
   <!-- ========================================================= -->
   <main id="site" class="site is-hidden" aria-hidden="true">
     <header class="nav">
@@ -114,34 +127,76 @@
 
           <!-- Song TITLES only. No lyrics anywhere in this project. -->
           <ol class="tracklist">
-            <li><span class="tracklist__num">01</span> Sweater Weather</li>
-            <li><span class="tracklist__num">02</span> Daddy Issues</li>
-            <li><span class="tracklist__num">03</span> Softcore</li>
-            <li><span class="tracklist__num">04</span> Reflections</li>
-            <li><span class="tracklist__num">05</span> Afraid</li>
-            <li><span class="tracklist__num">06</span> You Get Me So High</li>
-            <li><span class="tracklist__num">07</span> R.I.P. 2 My Youth</li>
+            <li><span class="tracklist__num">01</span> Hula Girl</li>
+            <li><span class="tracklist__num">02</span> Reflections</li>
+            <li><span class="tracklist__num">03</span> Fallen Star</li>
+            <li><span class="tracklist__num">04</span> Private</li>
+            <li><span class="tracklist__num">05</span> Stupid Boy</li>
+            <li><span class="tracklist__num">06</span> The Beach</li>
+            <li><span class="tracklist__num">07</span> Nervous</li>
             <li><span class="tracklist__num">08</span> Pretty Boy</li>
+            <li><span class="tracklist__num">09</span> W.D.Y.W.F.M</li>
           </ol>
-
-          <div class="spotify">
-            <!-- ============================================================= -->
-            <!-- Paste your Spotify embed iframe here.                         -->
-            <!-- In Spotify: Share -> Embed playlist -> copy the <iframe>.     -->
-            <!-- Example:                                                      -->
-            <!-- <iframe style="border-radius:12px"                           -->
-            <!--   src="https://open.spotify.com/embed/playlist/PLAYLIST_ID"  -->
-            <!--   width="100%" height="352" frameborder="0"                  -->
-            <!--   allow="autoplay; clipboard-write; encrypted-media;         -->
-            <!--   fullscreen; picture-in-picture" loading="lazy"></iframe>   -->
-            <!-- ============================================================= -->
-            <p class="spotify__placeholder">🎵 playlist goes here</p>
-          </div>
         </div>
+      </div>
+
+      <!-- Spotify embed + collaborative CTA -->
+      <div class="spotify">
+        <div class="spotify__frame">
+          <iframe
+            title="Playlist for disha"
+            src="https://open.spotify.com/embed/playlist/34Useq1pRjrRNe3abpjidr"
+            width="100%" height="352" frameborder="0"
+            allow="encrypted-media" loading="lazy"></iframe>
+        </div>
+
+        <!-- Collaborative invite button.
+             Alternate labels to pick from — swap the button text with any of these:
+               "make it ours"
+               "drop your tracks"
+        -->
+        <a
+          class="cta"
+          href="https://open.spotify.com/playlist/34Useq1pRjrRNe3abpjidr?si=2d0b31f701524eff&pt=64df4d01da8064f3eefa3254202fead8"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="cta__icon" aria-hidden="true">＋</span>
+          add your songs
+        </a>
+      </div>
+
+      <!-- (§7) Concert / tour gallery -->
+      <div class="gallery gallery--polaroid" aria-label="The Neighbourhood photos">
+        <figure class="polaroid polaroid--r1">
+          <div class="photo photo--tall">
+            <img src="images/neighbourhood-1.jpg" alt="The Neighbourhood performing live" loading="lazy" />
+          </div>
+        </figure>
+        <figure class="polaroid polaroid--r2">
+          <div class="photo photo--tall">
+            <img src="images/neighbourhood-2.jpg" alt="The Neighbourhood on stage under red lights" loading="lazy" />
+          </div>
+        </figure>
+        <figure class="polaroid polaroid--r1">
+          <div class="photo photo--tall">
+            <img src="images/neighbourhood-3.jpg" alt="Crowd at a The Neighbourhood concert" loading="lazy" />
+          </div>
+        </figure>
+        <figure class="polaroid polaroid--r3">
+          <div class="photo photo--tall">
+            <img src="images/neighbourhood-4.jpg" alt="The Neighbourhood tour moment" loading="lazy" />
+          </div>
+        </figure>
+        <figure class="polaroid polaroid--r2">
+          <div class="photo photo--tall">
+            <img src="images/neighbourhood-5.jpeg" alt="The Neighbourhood band photo" loading="lazy" />
+          </div>
+        </figure>
       </div>
     </section>
 
-    <!-- ================= TAB 2 — food ================= -->
+    <!-- ================= TAB 2 — food (order ticket) ================= -->
     <section
       class="panel"
       id="panel-food"
@@ -150,56 +205,84 @@
       tabindex="0"
       hidden
     >
-      <h2 class="panel__heading">tap a card to redeem</h2>
-      <div class="card-grid">
-        <!-- Wingstop -->
-        <div class="flip-card" role="button" tabindex="0" aria-pressed="false"
-             aria-label="Wingstop coupon, tap to flip">
-          <div class="flip-inner">
-            <div class="flip-face flip-front">
-              <span class="card-icon" aria-hidden="true">🍗</span>
-              <span class="card-label">Wingstop</span>
-            </div>
-            <div class="flip-face flip-back">
-              <span class="card-back-title">wingstop night</span>
-              <span class="card-back-msg">on me — redeem anytime, no expiration.</span>
-            </div>
-          </div>
-        </div>
+      <h2 class="panel__heading">the order ticket</h2>
 
-        <!-- chicken -->
-        <div class="flip-card" role="button" tabindex="0" aria-pressed="false"
-             aria-label="Chicken coupon, tap to flip">
-          <div class="flip-inner">
-            <div class="flip-face flip-front">
-              <span class="card-icon" aria-hidden="true">🍟</span>
-              <span class="card-label">chicken</span>
-            </div>
-            <div class="flip-face flip-back">
-              <span class="card-back-title">fried chicken run</span>
-              <span class="card-back-msg">whenever the craving hits — this one's covered.</span>
-            </div>
-          </div>
-        </div>
+      <div class="ticket-wrap">
+        <button class="order-btn" id="orderBtn" type="button">place order</button>
 
-        <!-- pasta -->
-        <div class="flip-card" role="button" tabindex="0" aria-pressed="false"
-             aria-label="Pasta coupon, tap to flip">
-          <div class="flip-inner">
-            <div class="flip-face flip-front">
-              <span class="card-icon" aria-hidden="true">🍝</span>
-              <span class="card-label">pasta</span>
-            </div>
-            <div class="flip-face flip-back">
-              <span class="card-back-title">pasta date</span>
-              <span class="card-back-msg">a big warm bowl, your pick of place — redeem anytime.</span>
-            </div>
+        <div class="ticket" id="ticket" aria-live="polite">
+          <div class="ticket__head">
+            <span class="ticket__brand">disha's diner</span>
+            <span class="ticket__sub">table for one — the good one</span>
+          </div>
+
+          <ul class="ticket__items">
+            <li class="ticket__row" style="--i:0">
+              <figure class="polaroid polaroid--sm polaroid--r1">
+                <div class="photo photo--sq">
+                  <img src="images/food-1.jpg" alt="Wingstop wings" loading="lazy" />
+                </div>
+              </figure>
+              <div class="ticket__text">
+                <span class="ticket__item">Wingstop</span>
+                <span class="ticket__note">your go-to order, whenever</span>
+              </div>
+            </li>
+
+            <!-- playful chicken line -->
+            <li class="ticket__row" style="--i:1">
+              <figure class="polaroid polaroid--sm polaroid--r2">
+                <div class="photo photo--sq">
+                  <img src="images/food-2.jpg" alt="Crispy fried chicken" loading="lazy" />
+                </div>
+              </figure>
+              <div class="ticket__text">
+                <span class="ticket__item">Chicken</span>
+                <span class="ticket__note">crispy, every time — no notes</span>
+              </div>
+            </li>
+
+            <li class="ticket__row" style="--i:2">
+              <figure class="polaroid polaroid--sm polaroid--r3">
+                <div class="photo photo--sq">
+                  <img src="images/food-3.jpeg" alt="Bowl of pasta" loading="lazy" />
+                </div>
+              </figure>
+              <div class="ticket__text">
+                <span class="ticket__item">Pasta</span>
+                <span class="ticket__note">I'll cook, you just show up</span>
+              </div>
+            </li>
+          </ul>
+
+          <div class="ticket__divider" style="--i:3"></div>
+          <div class="ticket__total" style="--i:4">
+            <span>total</span><span>my treat</span>
+          </div>
+          <div class="ticket__footer" style="--i:5">
+            thank you • served with love • <span id="ticketStamp"></span>
           </div>
         </div>
       </div>
+
+      <!-- (§8) Food gallery -->
+      <div class="gallery gallery--grid" aria-label="Food photos">
+        <figure class="polaroid polaroid--r1">
+          <div class="photo photo--sq"><img src="images/food-1.jpg" alt="Plate of wings" loading="lazy" /></div>
+        </figure>
+        <figure class="polaroid polaroid--r2">
+          <div class="photo photo--sq"><img src="images/food-2.jpg" alt="Fried chicken" loading="lazy" /></div>
+        </figure>
+        <figure class="polaroid polaroid--r3">
+          <div class="photo photo--sq"><img src="images/food-3.jpeg" alt="Pasta dish" loading="lazy" /></div>
+        </figure>
+        <figure class="polaroid polaroid--r1">
+          <div class="photo photo--sq"><img src="images/food-4.jpg" alt="A favourite meal" loading="lazy" /></div>
+        </figure>
+      </div>
     </section>
 
-    <!-- ================= TAB 3 — style ================= -->
+    <!-- ================= TAB 3 — style (the rack) ================= -->
     <section
       class="panel"
       id="panel-style"
@@ -208,56 +291,67 @@
       tabindex="0"
       hidden
     >
-      <h2 class="panel__heading">a little wishlist, on me</h2>
-      <div class="card-grid">
+      <h2 class="panel__heading">the rack</h2>
+      <p class="rack-hint">tap a hanger.</p>
+
+      <div class="rack">
+        <div class="rack__rail" aria-hidden="true"></div>
+
         <!-- PacSun jeans -->
-        <div class="flip-card" role="button" tabindex="0" aria-pressed="false"
-             aria-label="PacSun jeans gift tag, tap to flip">
-          <div class="flip-inner">
-            <div class="flip-face flip-front">
-              <span class="card-icon" aria-hidden="true">👖</span>
-              <span class="card-label">PacSun jeans</span>
+        <div class="hanger" role="button" tabindex="0" aria-pressed="false"
+             aria-label="PacSun jeans hanger, tap to see note">
+          <span class="hanger__hook" aria-hidden="true"></span>
+          <div class="hanger__garment">
+            <div class="photo photo--tall">
+              <img src="images/clothes-1.jpg" alt="PacSun jeans" loading="lazy" />
             </div>
-            <div class="flip-face flip-back">
-              <span class="card-back-title">jeans, sorted</span>
-              <span class="card-back-msg">the good PacSun pair you keep eyeing — it's yours.</span>
-            </div>
+            <span class="hanger__tag">PacSun jeans</span>
+            <span class="hanger__note">the pair you keep eyeing — it's yours.</span>
           </div>
         </div>
 
         <!-- Garage -->
-        <div class="flip-card" role="button" tabindex="0" aria-pressed="false"
-             aria-label="Garage gift tag, tap to flip">
-          <div class="flip-inner">
-            <div class="flip-face flip-front">
-              <span class="card-icon" aria-hidden="true">🧥</span>
-              <span class="card-label">Garage</span>
+        <div class="hanger" role="button" tabindex="0" aria-pressed="false"
+             aria-label="Garage hanger, tap to see note">
+          <span class="hanger__hook" aria-hidden="true"></span>
+          <div class="hanger__garment">
+            <div class="photo photo--tall">
+              <img src="images/clothes-2.jpg" alt="Garage outfit" loading="lazy" />
             </div>
-            <div class="flip-face flip-back">
-              <span class="card-back-title">Garage haul</span>
-              <span class="card-back-msg">fill the cart, hit checkout — consider it handled.</span>
-            </div>
+            <span class="hanger__tag">Garage</span>
+            <span class="hanger__note">fill the cart — consider it handled.</span>
           </div>
         </div>
 
         <!-- Hollister (playful).
-             Alternate copy to pick from — swap card-back-msg with any of these:
-               "employee discount not included — but this is 100% off retail"
-               "rival-brand rescue mission: fully funded"
+             Alternate notes to pick from — swap hanger__note text with any of these:
+               "off the clock, on me — shop the competition"
+               "employee discount not included; this is 100% off retail"
         -->
-        <div class="flip-card" role="button" tabindex="0" aria-pressed="false"
-             aria-label="Hollister gift tag, tap to flip">
-          <div class="flip-inner">
-            <div class="flip-face flip-front">
-              <span class="card-icon" aria-hidden="true">🏷️</span>
-              <span class="card-label">Hollister?</span>
+        <div class="hanger" role="button" tabindex="0" aria-pressed="false"
+             aria-label="Hollister hanger, tap to see note">
+          <span class="hanger__hook" aria-hidden="true"></span>
+          <div class="hanger__garment">
+            <div class="photo photo--tall">
+              <img src="images/clothes-3.jpg" alt="Hollister outfit" loading="lazy" />
             </div>
-            <div class="flip-face flip-back">
-              <span class="card-back-title">off the clock</span>
-              <span class="card-back-msg">you work there, so this one's the "shop somewhere else, on me" pass.</span>
-            </div>
+            <span class="hanger__tag">Hollister?</span>
+            <span class="hanger__note">you work there — so this is the "shop somewhere else, on me" pass.</span>
           </div>
         </div>
+      </div>
+
+      <!-- (§8) Style gallery -->
+      <div class="gallery gallery--grid" aria-label="Style photos">
+        <figure class="polaroid polaroid--r2">
+          <div class="photo photo--tall"><img src="images/clothes-1.jpg" alt="PacSun jeans look" loading="lazy" /></div>
+        </figure>
+        <figure class="polaroid polaroid--r3">
+          <div class="photo photo--tall"><img src="images/clothes-2.jpg" alt="Garage look" loading="lazy" /></div>
+        </figure>
+        <figure class="polaroid polaroid--r1">
+          <div class="photo photo--tall"><img src="images/clothes-3.jpg" alt="Hollister look" loading="lazy" /></div>
+        </figure>
       </div>
     </section>
   </main>

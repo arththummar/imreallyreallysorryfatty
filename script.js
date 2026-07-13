@@ -6,32 +6,61 @@
   "use strict";
 
   var SECRET = "disha";
+  var TRANSITION_HOLD = 1800; // ms the transition line stays on screen
 
-  // ---------- Gate unlock ----------
+  // ---------- Elements ----------
   var gate = document.getElementById("gate");
   var gateForm = document.getElementById("gateForm");
   var gateCard = document.getElementById("gateCard");
   var codeInput = document.getElementById("codeInput");
+  var transition = document.getElementById("transition");
   var site = document.getElementById("site");
 
+  // ---------- Reveal main site ----------
   function revealSite() {
-    // Bring the site into the DOM flow, then fade/slide it in.
     site.classList.remove("is-hidden");
     site.classList.add("reveal-start");
     site.setAttribute("aria-hidden", "false");
 
-    // Next frame: remove the pre-reveal state so the transition runs.
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
         site.classList.remove("reveal-start");
       });
     });
 
-    // Move focus to the first tab for keyboard users.
     var firstTab = document.getElementById("tab-hood");
     if (firstTab) firstTab.focus();
   }
 
+  // ---------- Transition screen, then site ----------
+  function playTransition() {
+    transition.classList.remove("is-hidden");
+    transition.setAttribute("aria-hidden", "false");
+
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        transition.classList.add("show");
+      });
+    });
+
+    setTimeout(function () {
+      transition.classList.remove("show");
+      transition.classList.add("fade-out");
+
+      var gone = false;
+      function hideAndReveal() {
+        if (gone) return;
+        gone = true;
+        transition.classList.add("is-hidden");
+        transition.setAttribute("aria-hidden", "true");
+        revealSite();
+      }
+      transition.addEventListener("transitionend", hideAndReveal, { once: true });
+      setTimeout(hideAndReveal, 800); // fallback (e.g. reduced motion)
+    }, TRANSITION_HOLD);
+  }
+
+  // ---------- Unlock flow ----------
   function unlock() {
     gate.classList.add("fade-out");
 
@@ -40,12 +69,10 @@
       if (done) return;
       done = true;
       gate.style.display = "none";
-      revealSite();
+      playTransition();
     }
-
     gate.addEventListener("transitionend", finish, { once: true });
-    // Fallback in case transitionend doesn't fire (e.g. reduced motion).
-    setTimeout(finish, 800);
+    setTimeout(finish, 800); // fallback
   }
 
   function rejectCode() {
@@ -84,7 +111,6 @@
       var active = panel.id === targetId;
       if (active) {
         panel.hidden = false;
-        // allow display to apply before transitioning opacity
         requestAnimationFrame(function () {
           panel.classList.add("is-active");
         });
@@ -96,11 +122,8 @@
   }
 
   tabs.forEach(function (tab, index) {
-    tab.addEventListener("click", function () {
-      activateTab(tab);
-    });
+    tab.addEventListener("click", function () { activateTab(tab); });
 
-    // Left/Right arrow navigation between tabs.
     tab.addEventListener("keydown", function (e) {
       var dir = 0;
       if (e.key === "ArrowRight") dir = 1;
@@ -113,24 +136,69 @@
     });
   });
 
-  // ---------- Flip cards ----------
-  var cards = Array.prototype.slice.call(document.querySelectorAll(".flip-card"));
+  // ---------- Food: order ticket reveal ----------
+  var orderBtn = document.getElementById("orderBtn");
+  var ticket = document.getElementById("ticket");
+  var ticketStamp = document.getElementById("ticketStamp");
 
-  function toggleCard(card) {
-    var flipped = card.classList.toggle("is-flipped");
-    card.setAttribute("aria-pressed", flipped ? "true" : "false");
+  function stampNow() {
+    if (!ticketStamp) return;
+    var now = new Date();
+    var hh = String(now.getHours()).padStart(2, "0");
+    var mm = String(now.getMinutes()).padStart(2, "0");
+    ticketStamp.textContent = "#0713 · " + hh + ":" + mm;
   }
 
-  cards.forEach(function (card) {
-    card.addEventListener("click", function () {
-      toggleCard(card);
+  if (orderBtn && ticket) {
+    orderBtn.addEventListener("click", function () {
+      stampNow();
+      // restart the animation if pressed again
+      ticket.classList.remove("revealed");
+      void ticket.offsetWidth; // reflow so the animation replays
+      ticket.classList.add("revealed");
+      orderBtn.textContent = "order again";
     });
+  }
 
-    card.addEventListener("keydown", function (e) {
+  // ---------- Style: rack hangers ----------
+  var hangers = Array.prototype.slice.call(document.querySelectorAll(".hanger"));
+
+  function toggleHanger(hanger) {
+    var open = hanger.classList.contains("is-open");
+    // retrigger swing each open
+    hanger.classList.remove("is-open");
+    void hanger.offsetWidth;
+    if (!open) {
+      hanger.classList.add("is-open");
+      hanger.setAttribute("aria-pressed", "true");
+    } else {
+      hanger.setAttribute("aria-pressed", "false");
+    }
+  }
+
+  hangers.forEach(function (hanger) {
+    hanger.addEventListener("click", function () { toggleHanger(hanger); });
+    hanger.addEventListener("keydown", function (e) {
       if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
         e.preventDefault();
-        toggleCard(card);
+        toggleHanger(hanger);
       }
     });
+  });
+
+  // ---------- Image fallback (no broken-image icons) ----------
+  var imgs = Array.prototype.slice.call(document.querySelectorAll(".photo img"));
+
+  function markFailed(img) {
+    var box = img.closest(".photo");
+    if (!box) return;
+    box.classList.add("img-failed");
+    box.setAttribute("data-fallback", img.getAttribute("alt") || "photo");
+  }
+
+  imgs.forEach(function (img) {
+    img.addEventListener("error", function () { markFailed(img); });
+    // catch images that errored before this script ran
+    if (img.complete && img.naturalWidth === 0) markFailed(img);
   });
 })();
